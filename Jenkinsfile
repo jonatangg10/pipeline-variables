@@ -37,8 +37,11 @@ pipeline {
                 echo "${WORKSPACE}"
                 echo "Copia_${JOB_NAME}"
                 def carpetaExiste = sh(script: "test -d ${ubicacion}/Copia_${JOB_NAME} && echo 'true' || echo 'false'", returnStdout: true).trim()
-                if (carpetaExiste == 'false') {
-                    sh 'mkdir -p ${ubicacion}/Copia_${JOB_NAME}'
+                if (!carpetaExiste) {
+                    dir(ubicacion) {
+                        sh 'mkdir -p Copia_${JOB_NAME}'
+                    }
+                    
                 }
                 sh "cp -f ${WORKSPACE}/Jenkinsfile ${ubicacion}/Copia_${JOB_NAME}/"
             } 
