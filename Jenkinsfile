@@ -24,6 +24,7 @@ pipeline {
     post {
         always {
             script {
+                // sh 'printenv'
                 echo "Jenkins URL: ${BUILD_URL}"
                 echo "Notificación de Jenkins: ${currentBuild.fullDisplayName}"
                 echo "Número de Build: ${currentBuild.number}"
