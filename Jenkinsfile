@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         LANG = 'es_CO.UTF-8'
-        repoLink = 'https://github.com/jonatangg10/pipelines.git'
+        repoLink = 'https://github.com/jonatangg10/pipeline-variables.git'
     }
     // triggers {
         // cron('H/2 * * * *')
