@@ -34,7 +34,7 @@ pipeline {
                 // Prueba  
                 // echo "${JOB_NAME}"
                 echo "${WORKSPACE}"
-                echo "Copia${JOB_NAME}"
+                echo "Copia_${JOB_NAME}"
                 
             } 
         }
