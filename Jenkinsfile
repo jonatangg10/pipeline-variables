@@ -34,7 +34,7 @@ pipeline {
                 // Prueba  
                 // echo "${JOB_NAME}"
                 echo "${WORKSPACE}"
-                
+                echo "${NODE_NAME}"
                
             } 
         }
