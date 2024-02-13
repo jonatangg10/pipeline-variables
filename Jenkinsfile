@@ -33,12 +33,12 @@ pipeline {
                 echo "Duración del Build: ${duracion} segundos"    
                 // Prueba  
                 // echo "${JOB_NAME}"
-                def ubicacion = "/var/jenkins_home/workspace/"
+                def ubicacion = "/var/jenkins_home/workspace/CopiasSeguridad/"
                 echo "${WORKSPACE}"
                 echo "Copia_${JOB_NAME}"
-                def carpetaExiste = sh(script: "test -d ${ubicacion}/CopiasSeguridad/Copia_${JOB_NAME} && echo 'true' || echo 'false'", returnStdout: true).trim()
+                def carpetaExiste = sh(script: "test -d ${ubicacion}/Copia_${JOB_NAME} && echo 'true' || echo 'false'", returnStdout: true).trim()
                 if (carpetaExiste == 'false') {
-                    sh 'mkdir -p ${ubicacion}/CopiasSeguridad/Copia_${JOB_NAME}'
+                    sh 'mkdir -p ${ubicacion}/Copia_${JOB_NAME}'
                 }
                 sh "cp -f ${WORKSPACE}/Jenkinsfile ${ubicacion}/Copia_${JOB_NAME}/"
             } 
