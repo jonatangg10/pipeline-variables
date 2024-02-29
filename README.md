@@ -7,26 +7,20 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Input') {
             steps {
-                echo 'Compilando el código...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Desplegando la aplicación...'
-            }
-        }
-        stage('Confirmation') {
-            steps {
-                input message: '¿Deseas continuar con el despliegue?', ok: 'Deploy'
-            }
-        }
-        stage('Finalize') {
-            steps {
-                echo 'Finalizando el despliegue...'
+                script {
+                    def userInput = input(
+                        id: 'userInput', message: 'Por favor ingrese su nombre:',
+                        parameters: [
+                            string(defaultValue: 'Anónimo', description: 'Nombre del usuario', name: 'Nombre')
+                        ]
+                    )
+                    echo "Hola, ${userInput.Nombre}!"
+                }
             }
         }
     }
 }
+
 
