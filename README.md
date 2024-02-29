@@ -6,21 +6,24 @@
 pipeline {
     agent any
 
+    parameters {
+        booleanParam(defaultValue: false, description: 'Seleccione "true" para habilitar la opción', name: 'opcion')
+    }
+
     stages {
-        stage('Input') {
+        stage('Ejecución') {
             steps {
                 script {
-                    def userInput = input(
-                        id: 'userInput', message: 'Por favor ingrese su nombre:',
-                        parameters: [
-                            string(defaultValue: 'Anónimo', description: 'Nombre del usuario', name: 'Nombre')
-                        ]
-                    )
-                    echo "Hola, ${userInput.Nombre}!"
+                    if (params.opcion) {
+                        echo 'La opción está habilitada.'
+                    } else {
+                        echo 'La opción está deshabilitada.'
+                    }
                 }
             }
         }
     }
 }
+
 
 
